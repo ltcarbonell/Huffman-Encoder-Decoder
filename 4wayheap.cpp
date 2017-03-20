@@ -15,6 +15,13 @@ bool FourWayHeap::isEmpty() {
 }
 
 /*
+* Function to return heap size
+*/
+int FourWayHeap::heapSize() {
+    return heap.size();
+}
+
+/*
 * Function to  get index parent of i
 */
 int FourWayHeap::parent(int i) {
@@ -29,33 +36,38 @@ int FourWayHeap::kthChild(int i, int k) {
 }
 
 /*
-* Function to inset element
+* Function to insert element
 */
-void FourWayHeap::insert(int x) {
+void FourWayHeap::insert(HuffmanNode* x) {
+    // cout << "Inserting..." << endl;
     int hole = heap.size();
+    // cout << "Push" << endl;
     heap.push_back(x);
+    // cout << "Percolate hole " << hole << endl;
     percolateUp(hole);
+    // cout << "Percolate finish" << endl;
+    // printHeap();
 }
 
 /*
 * Function to find least element
 */
-int FourWayHeap::findMin() {
+HuffmanNode* FourWayHeap::popMin() {
     if (isEmpty()) {
         cout<<"Array Underflow"<<endl;
         return 0;
     }
-    return heap.at(0);
+    return Delete(0);
 }
 /*
 * Function to delete element at an index
 */
-int FourWayHeap::Delete(int hole) {
+HuffmanNode* FourWayHeap::Delete(int hole) {
     if (isEmpty()) {
         cout<<"Array Underflow"<<endl;
         return 0;
     }
-    int keyItem = heap.at(hole);
+    HuffmanNode* keyItem = heap.at(hole);
     heap.at(hole) = heap.back();
     heap.pop_back();
     percolateDown(hole);
@@ -74,20 +86,21 @@ void FourWayHeap::buildHeap() {
 * Function percolateDown
 */
 void FourWayHeap::percolateDown(int hole) {
-    int child;
-    int tmp = heap.at(hole);
-    for ( ; kthChild(hole, 1) < heap.size(); hole = child) {
-        child = smallestChild( hole );
-        if (heap.at(child) < tmp) {
-            heap.at(hole) = heap.at(child);
-
+    if (!isEmpty()) {
+        int childIndex;
+        HuffmanNode* tmp = heap.at(hole);
+        while (kthChild(hole, 1) < heap.size()) {
+            childIndex = smallestChild( hole );
+            if (heap.at(childIndex)->value < tmp->value) {
+                heap.at(hole) = heap.at(childIndex);
+            }
+            else {
+                break;
+            }
+            hole = childIndex;
         }
-        else {
-            break;
-
-        }
+        heap.at(hole) = tmp;
     }
-    heap.at(hole) = tmp;
 }
 
 /*
@@ -98,7 +111,7 @@ int FourWayHeap::smallestChild(int hole) {
     int k = 2;
     int candidateChild = kthChild(hole, k);
     while ((k <= 4) && (candidateChild < heap.size())) {
-        if (heap.at(candidateChild) < heap.at(bestChildYet))
+        if (heap.at(candidateChild)->value < heap.at(bestChildYet)->value)
         bestChildYet = candidateChild;
         k++;
         candidateChild = kthChild(hole, k);
@@ -110,18 +123,29 @@ int FourWayHeap::smallestChild(int hole) {
 * Function percolateUp
 */
 void FourWayHeap::percolateUp(int hole) {
-    int tmp = heap.at(hole);
-    for (; hole > 0 && tmp < heap[parent(hole)]; hole = parent(hole))
-    heap.at(hole) = heap.at(parent(hole));
+    HuffmanNode* tmp = heap.at(hole);
+    // cout << "Hole " << hole << endl;
+    // cout << "child Value " << tmp->value << endl;
+    // cout << "parent Value " << heap.at(parent(hole))->value << endl;
+    while (hole > 0 && tmp->value < heap.at(parent(hole))->value) {
+        // cout << "Hole " << hole << endl;
+        // cout << "child Value " << tmp->value << endl;
+        // cout << "parent Value " << heap.at(parent(hole))->value << endl;
+        heap.at(hole) = heap.at(parent(hole));
+        hole = parent(hole);
+    }
+    // cout << "set temp" << endl;
     heap.at(hole) = tmp;
+    // cout << "finish temp" << endl;
+
 }
 
 /*
 * Function to print heap
 */
 void FourWayHeap::printHeap() {
-    cout<<"\nHeap = ";
-    for (int i = 0; i < heap.size(); i++)
-    cout<<heap.at(i)<<"   ";
+    for (int i = 0; i < heap.size(); i++) {
+        cout << heap.at(i)->key << ", " <<heap.at(i)->value<<"   ";
+    }
     cout<<endl;
 }

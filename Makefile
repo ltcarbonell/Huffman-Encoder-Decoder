@@ -1,4 +1,4 @@
-OBJS = HuffmanDecoder.o binaryheap.o 4wayheap.o pairingheap.o
+OBJS = HuffmanEncoder.o HuffmanDecoder.o binaryheap.o 4wayheap.o pairingheap.o
 CC = g++
 DEBUG = -g
 CFLAGS = -Wall -c -std=c++1y $(DEBUG)
@@ -11,6 +11,9 @@ encoder : $(OBJS)
 
 decoder : $(OBJS)
 	$(CC) $(LFLAGS) $(OBJS) decoder.cpp -o decoder.o
+
+HuffmanEncoder.o : HuffmanEncoder.h HuffmanEncoder.cpp
+	$(CC) $(CFLAGS) HuffmanEncoder.cpp
 
 HuffmanDecoder.o : HuffmanDecoder.h HuffmanDecoder.cpp
 	$(CC) $(CFLAGS) HuffmanDecoder.cpp
