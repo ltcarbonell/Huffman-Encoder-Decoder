@@ -1,11 +1,19 @@
-OBJS = generatecodes.o binaryheap.o 4wayheap.o pairingheap.o
+OBJS = HuffmanDecoder.o binaryheap.o 4wayheap.o pairingheap.o
 CC = g++
 DEBUG = -g
-CFLAGS = -Wall -c $(DEBUG)
-LFLAGS = -Wall $(DEBUG)
+CFLAGS = -Wall -c -std=c++1y $(DEBUG)
+LFLAGS = -Wall -std=c++1y $(DEBUG)
 
-test : $(OBJS)
-	$(CC) $(LFLAGS) $(OBJS) -o test
+all: encoder decoder
+
+encoder : $(OBJS)
+	$(CC) $(LFLAGS) $(OBJS) encoder.cpp -o encoder.o
+
+decoder : $(OBJS)
+	$(CC) $(LFLAGS) $(OBJS) decoder.cpp -o decoder.o
+
+HuffmanDecoder.o : HuffmanDecoder.h HuffmanDecoder.cpp
+	$(CC) $(CFLAGS) HuffmanDecoder.cpp
 
 generatecodes.o : generatecodes.cpp
 	$(CC) $(CFLAGS) generatecodes.cpp
@@ -23,4 +31,4 @@ pairingheap.o : pairingheap.h pairingheap.cpp
 
 
 clean :
-	\rm *.o test
+	\rm *.o
