@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <vector>
 #include <iterator>
+#include "HuffmanNode.h"
 using namespace std;
 /*
  * Class Declaration
@@ -9,7 +10,7 @@ using namespace std;
 class FourWayHeap
 {
     private:
-        vector<int> heap;
+        vector<HuffmanNode*> heap;
         void buildHeap();
         int smallestChild(int hole);
         int parent(int i);
@@ -19,8 +20,9 @@ class FourWayHeap
     public:
         FourWayHeap(){}
         bool isEmpty();
-        void insert(int x);
-        int findMin();
-        int Delete(int hole);
+        void insert(HuffmanNode* x);
+        HuffmanNode* popMin();
+        HuffmanNode* Delete(int hole);
         void printHeap();
+        int heapSize();
 };

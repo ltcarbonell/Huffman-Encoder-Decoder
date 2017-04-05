@@ -1,32 +1,21 @@
 #include <iostream>
 #include <string>
+#include "HuffmanNode.h"
 using namespace std;
-
-/*
- *  Node Struct Prototype
- */
-
-struct Node {
-    struct Node *right = NULL;
-    struct Node *left = NULL;
-    int value;
-    bool isLeaf = false;
-};
 
 /*
  *  DecodeTree Class Prototype
  */
 
-
 class DecodeTree {
 private:
-    Node* root;
+    HuffmanNode* root;
 public:
-    Node* getRoot();
+    HuffmanNode* getRoot();
     void addLeafAt(int value, string binaryLocation);
     int getAt(string binaryLocation);
 
     DecodeTree() {
-        root = new (struct Node);
+        root = new (struct HuffmanNode);
     }
 };

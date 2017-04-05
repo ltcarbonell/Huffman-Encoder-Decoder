@@ -4,19 +4,19 @@
 using namespace std;
 
 void DecodeTree::addLeafAt(int value, string binaryLocation) {
-    Node *curr;
+    HuffmanNode *curr;
     curr = root;
     for (int i = 0; i < binaryLocation.length(); i++) {
         if (binaryLocation.at(i) == '0') {
             if (curr->left == NULL) {
-                Node* newNode = new (struct Node);
+                HuffmanNode* newNode = new (struct HuffmanNode);
                 curr->left = newNode;
             }
             curr = curr->left;
         }
         else if (binaryLocation.at(i) == '1') {
             if (curr->right == NULL) {
-                Node* newNode = new (struct Node);
+                HuffmanNode* newNode = new (struct HuffmanNode);
                 curr->right = newNode;
             }
             curr = curr->right;
@@ -27,7 +27,7 @@ void DecodeTree::addLeafAt(int value, string binaryLocation) {
 }
 
 int DecodeTree::getAt(string binaryLocation) {
-    Node *curr;
+    HuffmanNode *curr;
     curr = root;
     // cout << "Get " << binaryLocation << endl;
     for (int i = 0; i < binaryLocation.length(); i++) {
@@ -51,6 +51,6 @@ int DecodeTree::getAt(string binaryLocation) {
     }
 }
 
-Node* DecodeTree::getRoot() {
+HuffmanNode* DecodeTree::getRoot() {
     return root;
 }
