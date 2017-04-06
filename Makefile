@@ -1,8 +1,8 @@
 OBJS = HuffmanEncoder.o HuffmanDecoder.o binaryheap.o 4wayheap.o pairingheap.o
 CC = g++
 DEBUG = -g
-CFLAGS = -Wall -c -std=c++1y $(DEBUG)
-LFLAGS = -Wall -std=c++1y $(DEBUG)
+CFLAGS = -c -std=c++1y $(DEBUG)
+LFLAGS = -std=c++1y $(DEBUG)
 
 all: encoder decoder
 
