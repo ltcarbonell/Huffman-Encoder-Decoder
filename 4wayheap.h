@@ -4,8 +4,9 @@
 #include <iterator>
 #include "HuffmanNode.h"
 using namespace std;
+
 /*
- * Class Declaration
+ * FourWayHeap Class Declaration
  */
 class FourWayHeap
 {
@@ -22,7 +23,6 @@ class FourWayHeap
         bool isEmpty();
         void insert(HuffmanNode* x);
         HuffmanNode* popMin();
-        HuffmanNode* Delete(int hole);
-        void printHeap();
+        HuffmanNode* delete(int hole);
         int heapSize();
 };

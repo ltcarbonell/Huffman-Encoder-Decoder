@@ -13,7 +13,6 @@ using namespace std;
 class EncodeTree {
 private:
     HuffmanNode* root;
-    // vector<HuffmanNode*> array;
     FourWayHeap heap;
     string outFileName;
     map<int,string> code_table;
@@ -26,6 +25,5 @@ public:
     HuffmanNode* combineElements(HuffmanNode* first, HuffmanNode* second);
     void writeCodeTableToOutfile();
     string getBinPathTo(int key);
-
     EncodeTree(vector<HuffmanNode*> inputArray, string outFileName);
 };

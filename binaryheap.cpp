@@ -1,39 +1,24 @@
-/*
- * C++ Program to Implement Binary Heap
- */
 #include "binaryheap.h"
 
-/*
- * Return Heap Size
- */
 int BinaryHeap::Size() {
     return heap.size();
 }
 
-/*
- * Insert Element into a Heap
- */
 void BinaryHeap::Insert(int element) {
     heap.push_back(element);
     heapifyup(heap.size() -1);
 }
-/*
- * Delete Minimum Element
- */
-void BinaryHeap::DeleteMin() {
+
+void BinaryHeap::deleteMin() {
     if (heap.size() == 0) {
         cout<<"Heap is Empty"<<endl;
         return;
     }
-    heap[0] = heap.at(heap.size() - 1);
+    heap.at(0) = heap.at(heap.size() - 1);
     heap.pop_back();
     heapifydown(0);
-    // cout<<"Element Deleted"<<endl;
 }
 
-/*
- * Extract Minimum Element
- */
 int BinaryHeap::ExtractMin() {
     if (heap.size() == 0) {
         return -1;
@@ -42,22 +27,6 @@ int BinaryHeap::ExtractMin() {
         return heap.front();
 }
 
-/*
- * Display Heap
- */
-void BinaryHeap::DisplayHeap() {
-    vector <int>::iterator pos = heap.begin();
-    cout<<"Heap -->  ";
-    while (pos != heap.end()) {
-        cout<<*pos<<" ";
-        pos++;
-    }
-    cout<<endl;
-}
-
-/*
- * Return Left Child
- */
 int BinaryHeap::left(int parent) {
     int l = 2 * parent + 1;
     if (l < heap.size())
@@ -66,9 +35,6 @@ int BinaryHeap::left(int parent) {
         return -1;
 }
 
-/*
- * Return Right Child
- */
 int BinaryHeap::right(int parent) {
     int r = 2 * parent + 2;
     if (r < heap.size())
@@ -77,9 +43,6 @@ int BinaryHeap::right(int parent) {
         return -1;
 }
 
-/*
- * Return Parent
- */
 int BinaryHeap::parent(int child) {
     int p = (child - 1)/2;
     if (child == 0)
@@ -88,9 +51,6 @@ int BinaryHeap::parent(int child) {
         return p;
 }
 
-/*
- * Heapify- Maintain Heap Structure bottom up
- */
 void BinaryHeap::heapifyup(int in) {
     if (in >= 0 && parent(in) >= 0 && heap[parent(in)] > heap[in]) {
         int temp = heap[in];
@@ -100,9 +60,6 @@ void BinaryHeap::heapifyup(int in) {
     }
 }
 
-/*
- * Heapify- Maintain Heap Structure top down
- */
 void BinaryHeap::heapifydown(int in) {
 
     int child = left(in);
@@ -117,53 +74,3 @@ void BinaryHeap::heapifydown(int in) {
         heapifydown(child);
     }
 }
-
-/*
- * Main Contains Menu
-
-int main() {
-    BinaryHeap h;
-    while (1)
-    {
-        cout<<"------------------"<<endl;
-        cout<<"Operations on Heap"<<endl;
-        cout<<"------------------"<<endl;
-        cout<<"1.Insert Element"<<endl;
-        cout<<"2.Delete Minimum Element"<<endl;
-        cout<<"3.Extract Minimum Element"<<endl;
-        cout<<"4.Print Heap"<<endl;
-        cout<<"5.Exit"<<endl;
-        int choice, element;
-        cout<<"Enter your choice: ";
-        cin>>choice;
-        switch(choice)
-        {
-        case 1:
-            cout<<"Enter the element to be inserted: ";
-            cin>>element;
-            h.Insert(element);
-            break;
-        case 2:
-            h.DeleteMin();
-            break;
-        case 3:
-            cout<<"Minimum Element: ";
-            if (h.ExtractMin() == -1)
-            {
-                cout<<"Heap is Empty"<<endl;
-            }
-            else
-                cout<<"Minimum Element:  "<<h.ExtractMin()<<endl;
-            break;
-        case 4:
-            cout<<"Displaying elements of Hwap:  ";
-            h.DisplayHeap();
-            break;
-        case 5:
-            exit(1);
-        default:
-            cout<<"Enter Correct Choice"<<endl;
-        }
-    }
-    return 0;
-}*/

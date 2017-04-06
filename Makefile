@@ -7,10 +7,10 @@ LFLAGS = -Wall -std=c++1y $(DEBUG)
 all: encoder decoder
 
 encoder : $(OBJS)
-	$(CC) $(LFLAGS) $(OBJS) encoder.cpp -o encoder.o
+	$(CC) $(LFLAGS) $(OBJS) encoder.cpp -o encoder
 
 decoder : $(OBJS)
-	$(CC) $(LFLAGS) $(OBJS) decoder.cpp -o decoder.o
+	$(CC) $(LFLAGS) $(OBJS) decoder.cpp -o decoder
 
 HuffmanEncoder.o : HuffmanEncoder.h HuffmanEncoder.cpp
 	$(CC) $(CFLAGS) HuffmanEncoder.cpp

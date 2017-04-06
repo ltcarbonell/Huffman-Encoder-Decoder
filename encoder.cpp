@@ -36,9 +36,11 @@ char convertStringToBin(string binaryString) {
 }
 
 int main(int argc, char const *argv[]) {
-    // string filename = "sample1/sample_input_small.txt";
-    // string filename = "sample1/sample_input_medium.txt";
-    string filename = "sample2/sample_input_large.txt";
+    if (argc != 2) {
+        cerr << "Invalid nummber of arguments" << endl;
+        return 1;
+    }
+    string filename = argv[1];
 
     cout << "Reading input file" << endl;
     int freq_table[MAX_SIZE] = {0};

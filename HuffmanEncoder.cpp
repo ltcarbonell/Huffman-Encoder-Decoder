@@ -24,7 +24,6 @@ HuffmanNode* EncodeTree::combineElements(HuffmanNode* first, HuffmanNode* second
 
 HuffmanNode* EncodeTree::buildTree(vector<HuffmanNode*> inputArray) {
     for (size_t i = 0; i < inputArray.size(); i++) {
-        // cout << "Inserting " << inputArray.at(i)->key << endl;
         this->heap.insert(inputArray.at(i));
     }
     cout << "Finished Inserting" << endl;
@@ -37,9 +36,7 @@ HuffmanNode* EncodeTree::buildTree(vector<HuffmanNode*> inputArray) {
     while (this->heap.heapSize() > 1) {
         firstElem = this->heap.popMin();
         secondElem = this->heap.popMin();
-        // cout << "Combining " << firstElem->value << ", " << secondElem->value << endl;
         result = combineElements(firstElem, secondElem);
-        // cout << "Finished combineElements with new value " << result->value << endl;
         this->heap.insert(result);
     }
     return result;

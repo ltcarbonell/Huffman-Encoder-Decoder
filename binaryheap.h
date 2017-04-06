@@ -3,8 +3,9 @@
 #include <vector>
 #include <iterator>
 using namespace std;
+
 /*
- * Class Declaration
+ * BinaryHeap Class Declaration
  */
 class BinaryHeap
 {
@@ -18,8 +19,7 @@ class BinaryHeap
     public:
         BinaryHeap(){}
         void Insert(int element);
-        void DeleteMin();
+        void deleteMin();
         int ExtractMin();
-        void DisplayHeap();
         int Size();
 };

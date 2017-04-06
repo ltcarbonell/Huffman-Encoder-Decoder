@@ -14,7 +14,6 @@ public:
     HuffmanNode* getRoot();
     void addLeafAt(int value, string binaryLocation);
     int getAt(string binaryLocation);
-
     DecodeTree() {
         root = new (struct HuffmanNode);
     }

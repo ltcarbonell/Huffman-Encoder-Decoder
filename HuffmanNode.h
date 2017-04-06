@@ -5,7 +5,7 @@ using namespace std;
 /*
  *  HuffmanNode Struct Prototype
  */
-
+ 
 struct HuffmanNode {
     struct HuffmanNode *right = NULL;
     struct HuffmanNode *left = NULL;
