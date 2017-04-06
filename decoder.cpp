@@ -6,20 +6,27 @@
 using namespace std;
 
 int main(int argc, char const *argv[]) {
+    if (argc != 3) {
+        cerr << "Invalid nummber of arguments" << endl;
+        return 1;
+    }
+    string encoded_filename = argv[1];
+    string code_table_filename = argv[2];
+
+
     DecodeTree DT = DecodeTree();
     int a;
     string b;
-    ifstream ct("code_table.txt", ios::in);
+    ifstream ct(code_table_filename, ios::in);
     cout << "Building Decode Tree" << endl;
     while (ct >> a >> b) {
         DT.addLeafAt(a, b);
     }
-    // cout << DT.getAt("111") << "<-" << endl;
 
     ofstream myfile;
     myfile.open("decoded.txt", ios::out);
     cout << "Decoding binary file" << endl;
-    ifstream f("encoded.bin", ios::binary | ios::in);
+    ifstream f(encoded_filename, ios::binary | ios::in);
     char c;
     string resultChunk;
     while (f.get(c)) {

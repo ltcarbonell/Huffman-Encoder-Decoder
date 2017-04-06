@@ -45,8 +45,6 @@ vector<int> parseFile(string filename) {
 }
 
 int main(int argc, char const *argv[]) {
-    // string filename = "sample1/sample_input_small.txt";
-    // string filename = "sample1/sample_input_medium.txt";
     string filename = "sample2/sample_input_large.txt";
 
     vector<int> freq_table = parseFile(filename);
@@ -61,14 +59,16 @@ int main(int argc, char const *argv[]) {
 
     // 4-way heap
     start_time = clock();
-    for(int i = 0; i < 10; i++) { //run 10 times on given data set
+    for(int i = 0; i < 10; i++) {
+        //run 10 times on given data set
         build_tree_using_4way_heap(freq_table);
     }
     cout << "Average time using 4-way heap (microsecond):  " << (clock() - start_time)/10 << endl;
 
     // pairing heap
     start_time = clock();
-    for(int i = 0; i < 10; i++) { //run 10 times on given data set
+    for(int i = 0; i < 10; i++) {
+        //run 10 times on given data set
         build_tree_using_pairing_heap(freq_table);
     }
     cout << "Average time using pairing heap (microsecond):  " << (clock() - start_time)/10 << endl;

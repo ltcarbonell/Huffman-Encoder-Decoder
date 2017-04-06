@@ -29,10 +29,8 @@ void DecodeTree::addLeafAt(int value, string binaryLocation) {
 int DecodeTree::getAt(string binaryLocation) {
     HuffmanNode *curr;
     curr = root;
-    // cout << "Get " << binaryLocation << endl;
     for (int i = 0; i < binaryLocation.length(); i++) {
         if (curr == NULL) {
-            // cout << "Invalid leaf location" << endl;
             return -1;
         }
         else if (binaryLocation.at(i) == '0') {
@@ -46,7 +44,6 @@ int DecodeTree::getAt(string binaryLocation) {
         return curr->value;
     }
     else {
-        // cout << "Invalid leaf location" << endl;
         return -1;
     }
 }

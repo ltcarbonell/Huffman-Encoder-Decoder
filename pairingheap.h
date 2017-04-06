@@ -2,9 +2,11 @@
 #include <cstdlib>
 #include <vector>
 using namespace std;
+
 /*
- * Node Class Declaration
+ *  PairNode Class Prototype
  */
+
 class PairNode {
     public:
         int element;
@@ -20,21 +22,18 @@ class PairNode {
 };
 
 /*
- * Class Declaration
+ *  PairingHeap Class Prototype
  */
-class PairingHeap
-{
+ 
+class PairingHeap {
     private:
         PairNode *root;
         void compareAndLink(PairNode * &first, PairNode *second);
         PairNode *combineSiblings(PairNode *firstSibling);
-        //  void reclaimMemory(PairNode *t);
     public:
         PairingHeap();
-        // ~PairingHeap();
         bool isEmpty();
         int &findMin();
         PairNode *Insert(int &x);
         void deleteMin();
-        // void makeEmpty();
 };
