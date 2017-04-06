@@ -34,7 +34,7 @@ HuffmanNode* FourWayHeap::popMin() {
     return delete(0);
 }
 
-HuffmanNode* FourWayHeap::delete(int hole) {
+HuffmanNode* FourWayHeap::Delete(int hole) {
     if (isEmpty()) {
         cout<<"Array Underflow"<<endl;
         return 0;

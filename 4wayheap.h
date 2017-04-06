@@ -8,8 +8,7 @@ using namespace std;
 /*
  * FourWayHeap Class Declaration
  */
-class FourWayHeap
-{
+class FourWayHeap {
     private:
         vector<HuffmanNode*> heap;
         void buildHeap();
@@ -23,6 +22,6 @@ class FourWayHeap
         bool isEmpty();
         void insert(HuffmanNode* x);
         HuffmanNode* popMin();
-        HuffmanNode* delete(int hole);
+        HuffmanNode* Delete(int hole);
         int heapSize();
 };

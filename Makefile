@@ -34,4 +34,4 @@ pairingheap.o : pairingheap.h pairingheap.cpp
 
 
 clean :
-	\rm *.o
+	\rm -rf *.o encoder decoder decoded.txt encoded.bin code_table.txt *.dSYM/
