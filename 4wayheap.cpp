@@ -23,7 +23,7 @@ int FourWayHeap::kthChild(int i, int k) {
 void FourWayHeap::insert(HuffmanNode* x) {
     int hole = heap.size();
     heap.push_back(x);
-    percolateUp(hole);
+    heapifyUp(hole);
 }
 
 HuffmanNode* FourWayHeap::popMin() {
@@ -42,16 +42,16 @@ HuffmanNode* FourWayHeap::Delete(int hole) {
     HuffmanNode* keyItem = heap.at(hole);
     heap.at(hole) = heap.back();
     heap.pop_back();
-    percolateDown(hole);
+    heapifyDown(hole);
     return keyItem;
 }
 
 void FourWayHeap::buildHeap() {
     for (int i = heap.size() - 1 ; i >= 0; i--)
-    percolateDown(i);
+    heapifyDown(i);
 }
 
-void FourWayHeap::percolateDown(int hole) {
+void FourWayHeap::heapifyDown(int hole) {
     if (!isEmpty()) {
         int childIndex;
         HuffmanNode* tmp = heap.at(hole);
@@ -82,7 +82,7 @@ int FourWayHeap::smallestChild(int hole) {
     return bestChildYet;
 }
 
-void FourWayHeap::percolateUp(int hole) {
+void FourWayHeap::heapifyUp(int hole) {
     HuffmanNode* tmp = heap.at(hole);
     while (hole > 0 && tmp->value < heap.at(parent(hole))->value) {
         heap.at(hole) = heap.at(parent(hole));
