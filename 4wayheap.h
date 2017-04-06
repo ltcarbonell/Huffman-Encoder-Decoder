@@ -15,8 +15,8 @@ class FourWayHeap {
         int smallestChild(int hole);
         int parent(int i);
         int kthChild(int i, int k);
-        void percolateDown(int hole);
-        void percolateUp(int hole);
+        void heapifyDown(int hole);
+        void heapifyUp(int hole);
     public:
         FourWayHeap(){}
         bool isEmpty();
